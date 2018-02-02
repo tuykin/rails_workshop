@@ -6,4 +6,8 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
+  def auth_headers(name: 'viraj', password: 'password')
+    credentials = "#{name}:#{password}"
+    { 'Authorization' => "Basic #{Base64.encode64(credentials)}" }
+  end
 end

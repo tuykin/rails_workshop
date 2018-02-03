@@ -8,6 +8,8 @@
   <%= @article.text %>
 </p>
 
+<%= render partial: 'web/articles/link', collection: @article.links %>
+
 <h2>Comments</h2>
 <%= render partial: 'web/articles/comments/comment', collection: @article.comments %>
 

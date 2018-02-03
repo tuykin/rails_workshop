@@ -51,6 +51,6 @@ class Web::ArticlesController < Web::ApplicationController
   private
 
   def article_params
-    params.require(:article).permit(:title, :text, :category_id)
+    params.require(:article).permit(:title, :text, :category_id, links_attributes: [:id, :_destroy, :url])
   end
 end

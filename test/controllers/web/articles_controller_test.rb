@@ -25,4 +25,11 @@ class WebArticlesControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to article
     assert_equal 'new title', article.reload.title
   end
+
+  test 'should destroy article' do
+    article = articles(:one)
+    delete article_url(article.id)
+    assert_redirected_to articles_path
+    assert_raises(ActiveRecord::RecordNotFound) { article.reload }
+  end
 end

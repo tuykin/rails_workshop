@@ -19,7 +19,7 @@ class WebArticlesControllerTest < ActionDispatch::IntegrationTest
     article = Article.find_by(title: params[:title])
     assert_response :redirect
     assert { category == article.category }
-    # ??? assert { article.state == 'draft' }
+    assert { article.state == 'draft' }
   end
 
   test 'should update article' do

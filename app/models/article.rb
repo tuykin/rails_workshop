@@ -1,11 +1,10 @@
 class Article < ApplicationRecord
   has_many :comments, dependent: :destroy
-  belongs_to :category
+  belongs_to :category, optional: true
   validates :title, presence: true,
                     length: { minimum: 5 }
 
   state_machine :state, initial: :draft do
-
     state :draft
     state :on_moderation
     state :published

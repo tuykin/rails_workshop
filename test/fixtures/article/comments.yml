@@ -5,7 +5,7 @@ one:
   body: MyText
   article: published
 
-two:
+with_likes:
   commentor: MyString
   body: MyText
   article: published

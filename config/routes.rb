@@ -11,7 +11,11 @@ Rails.application.routes.draw do
 
     resources :articles do
       scope module: :articles do
-        resources :comments, only: [:create, :destroy]
+        resources :comments, only: [:create, :destroy] do
+          scope module: :comments do
+            resources :likes, only: [:create]
+          end
+        end
       end
       patch :send_to_moderation, on: :member
     end

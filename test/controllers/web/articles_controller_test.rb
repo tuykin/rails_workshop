@@ -16,8 +16,8 @@ class WebArticlesControllerTest < ActionDispatch::IntegrationTest
     category = article_categories(:sci_fi)
     params = { title: 'title', text: 'some text', category_id: category.id }
     post articles_url, params: { article: params }
-    assert_redirected_to Article.last
-    assert_equal category, Article.last.category
+    assert_response :redirect
+    assert { category == Article.last.category }
   end
 
   test 'should update article' do
@@ -25,7 +25,7 @@ class WebArticlesControllerTest < ActionDispatch::IntegrationTest
     params = { title: 'new title' }
     put article_url(article.id), params: { article: params }
     assert_redirected_to article
-    assert_equal 'new title', article.reload.title
+    assert { 'new title' == article.reload.title }
   end
 
   test 'should destroy article' do

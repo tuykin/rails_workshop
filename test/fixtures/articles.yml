@@ -9,3 +9,8 @@ published:
   title: $LABEL
   text: published text
   state: published
+
+on_moderation:
+  title: $LABEL
+  text: text to moderate
+  state: on_moderation

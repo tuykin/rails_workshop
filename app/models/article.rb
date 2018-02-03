@@ -13,7 +13,7 @@ class Article < ApplicationRecord
       transition :draft => :on_moderation
     end
 
-    event :publish do
+    event :moderate do
       transition :on_moderation => :published
     end
   end

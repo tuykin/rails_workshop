@@ -3,9 +3,15 @@ Rails.application.routes.draw do
   scope module: :web do
     get 'welcome/index'
 
+    namespace :moderation do
+      resources :articles, only: [:index, :show] do
+        patch :moderate, on: :member
+      end
+    end
+
     resources :articles do
       scope module: :articles do
-        resources :comments
+        resources :comments, only: [:create, :destroy]
       end
       patch :send_to_moderation, on: :member
     end

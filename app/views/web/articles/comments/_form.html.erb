@@ -1,13 +1,11 @@
-<%= form_with(model: [@article, @article.comments.build], url: article_comments_path(@article)) do |form| %>
+<%= simple_form_for @article.comments.build, url: article_comments_path(@article) do |f| %>
   <p>
-    <%= form.label :commentor %><br>
-    <%= form.text_field :commentor %>
+    <%= f.input :commentor %>
   </p>
   <p>
-    <%= form.label :body %><br>
-    <%= form.text_area :body %>
+    <%= f.input :body %>
   </p>
   <p>
-    <%= form.submit %>
+    <%= f.button :submit %>
   </p>
 <% end %>

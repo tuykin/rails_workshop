@@ -12,14 +12,17 @@ class Web::Moderation::ArticlesController < Web::ApplicationController
 
   def edit
     @article = Article::ModerationType.find(params[:id])
+    @categories = Article::Category.all
   end
 
   def moderate
     @article = Article::ModerationType.find(params[:id])
-    @article.update(params[:article])
-    @article.moderate!
-
-    redirect_to @article
+    if @article.update(params[:article])
+      @article.moderate!
+      redirect_to @article
+    else
+      render 'edit'
+    end
   end
 
   private

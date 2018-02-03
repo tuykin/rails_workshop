@@ -6,7 +6,11 @@ class Web::Moderation::ArticlesController < Web::ApplicationController
   end
 
   def show
-    @article = Article.with_state(:on_moderation).find(params[:id])
+    @article = Article.find(params[:id])
+  end
+
+  def edit
+    @article = Article.find(params[:id])
   end
 
   def moderate

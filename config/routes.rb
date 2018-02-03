@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     get 'welcome/index'
 
     namespace :moderation do
-      resources :articles, only: [:index, :show] do
+      resources :articles, only: [:index, :show, :edit] do
         patch :moderate, on: :member
       end
     end

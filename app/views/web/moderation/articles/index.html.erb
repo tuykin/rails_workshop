@@ -4,10 +4,12 @@
   <tr>
     <th><%= sort_link(@q, :title) %></th>
     <th>Text</th>
+    <th><%= sort_link(@q, :category) %></th>
+    <th><%= sort_link(@q, :state) %></th>
   </tr>
   <%= search_form_for @q, url: moderation_articles_path do |f| %>
-    <%= f.label :title_cont %>
-    <%= f.search_field :title_cont %>
+    <%= f.label :title %>
+    <%= f.search_field :title %>
 
     <%= f.submit %>
   <% end %>
@@ -15,8 +17,10 @@
     <tr>
       <td><%= article.title %></td>
       <td><%= article.text %></td>
-      <td><%= link_to 'Show', article_path(article) %></td>
-      <td><%= link_to 'Edit', edit_article_path(article) %></td>
+      <td><%= article.category.try(:name) %></td>
+      <td><%= article.state %></td>
+      <td><%= link_to 'Show', moderation_article_path(article) %></td>
+      <td><%= link_to 'Edit', edit_moderation_article_path(article) %></td>
       <td><%= link_to 'Destroy', article_path(article),
       method: :delete,
       data: { confirm: 'Are you sure?' } %></td>

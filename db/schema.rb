@@ -10,13 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180203180339) do
+ActiveRecord::Schema.define(version: 20180203194015) do
 
   create_table "article_categories", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_article_categories_on_name", unique: true
+  end
+
+  create_table "article_comment_likes", force: :cascade do |t|
+    t.integer "comment_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["comment_id"], name: "index_article_comment_likes_on_comment_id"
   end
 
   create_table "article_comments", force: :cascade do |t|

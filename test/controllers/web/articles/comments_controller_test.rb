@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class Articles::CommentsControllerTest < ActionDispatch::IntegrationTest
+class Web::Articles::CommentsControllerTest < ActionDispatch::IntegrationTest
   test 'should create comment' do
     article = articles(:one)
     params = { commentor: 'me', body: 'some text' }

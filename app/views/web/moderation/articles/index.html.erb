@@ -2,10 +2,15 @@
 
 <table>
   <tr>
-    <th>Title</th>
+    <th><%= sort_link(@q, :title) %></th>
     <th>Text</th>
   </tr>
-  <%= link_to 'New article', new_article_path %>
+  <%= search_form_for @q, url: moderation_articles_path do |f| %>
+    <%= f.label :title_cont %>
+    <%= f.search_field :title_cont %>
+
+    <%= f.submit %>
+  <% end %>
   <% @articles.each do |article| %>
     <tr>
       <td><%= article.title %></td>

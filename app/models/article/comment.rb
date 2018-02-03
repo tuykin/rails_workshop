@@ -1,5 +1,3 @@
-class Article
-  class Comment < ApplicationRecord
-    belongs_to :article
-  end
+class Article::Comment < ApplicationRecord
+  belongs_to :article
 end

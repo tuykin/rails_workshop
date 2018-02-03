@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       scope module: :articles do
         resources :comments
       end
+      patch :send_to_moderation, on: :member
     end
   end
 

@@ -17,7 +17,6 @@ class Web::ArticlesController < Web::ApplicationController
 
   def create
     @article = Article.new(article_params)
-
     if @article.save
       redirect_to @article
     else
@@ -42,7 +41,15 @@ class Web::ArticlesController < Web::ApplicationController
     redirect_to articles_path
   end
 
+  def send_to_moderation
+    @article = Article.find(params[:id])
+    @article.send_to_moderation!
+
+    redirect_to @article
+  end
+
   private
+
   def article_params
     params.require(:article).permit(:title, :text, :category_id)
   end

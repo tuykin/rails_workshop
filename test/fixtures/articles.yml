@@ -3,9 +3,11 @@
 one:
   title: MyString
   text: MyText
+  state: draft
   category: it
 
 two:
   title: MyString
   text: MyText
+  state: draft
   category: sci_fi

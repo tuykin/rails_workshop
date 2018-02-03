@@ -5,6 +5,11 @@ class Article < ApplicationRecord
                     length: { minimum: 5 }
 
   state_machine :state, initial: :draft do
+
+    state :draft
+    state :on_moderation
+    state :published
+
     event :send_to_moderation do
       transition :draft => :on_moderation
     end
@@ -12,9 +17,5 @@ class Article < ApplicationRecord
     event :publish do
       transition :on_moderation => :published
     end
-
-    state :draft
-    state :on_moderation
-    state :published
   end
 end

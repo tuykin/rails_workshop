@@ -19,7 +19,7 @@ class WebArticlesControllerTest < ActionDispatch::IntegrationTest
     article = Article.find_by(title: params[:title])
     assert_response :redirect
     assert { category == article.category }
-    assert { article.state == 'draft' }
+    assert { article.draft? }
   end
 
   test 'should update article' do
@@ -27,7 +27,7 @@ class WebArticlesControllerTest < ActionDispatch::IntegrationTest
     params = { title: 'new title' }
     put article_url(article.id), params: { article: params }
     assert_response :redirect
-    assert { 'new title' == article.reload.title }
+    assert { params[:title] == article.reload.title }
   end
 
   test 'should destroy article' do
@@ -41,6 +41,6 @@ class WebArticlesControllerTest < ActionDispatch::IntegrationTest
     article = articles(:one)
     patch send_to_moderation_article_path(article)
     assert_response :redirect
-    assert { 'on_moderation' == article.reload.state }
+    assert { article.reload.on_moderation? }
   end
 end

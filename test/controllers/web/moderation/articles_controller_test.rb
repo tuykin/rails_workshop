@@ -12,6 +12,12 @@ class WebModerationArticlesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test 'should get atricle on moderation edit' do
+    article = articles(:on_moderation)
+    get edit_moderation_article_url(article.id)
+    assert_response :success
+  end
+
   test 'should moderate article' do
     category = article_categories(:sci_fi)
     article = articles(:on_moderation)

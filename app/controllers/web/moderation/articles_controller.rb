@@ -11,12 +11,12 @@ class Web::Moderation::ArticlesController < Web::ApplicationController
   end
 
   def edit
-    @article = Article.find(params[:id])
+    @article = Article::ModerationType.find(params[:id])
   end
 
   def moderate
-    @article = Article.find(params[:id])
-    @article.update(article_params)
+    @article = Article::ModerationType.find(params[:id])
+    @article.update(params[:article])
     @article.moderate!
 
     redirect_to @article

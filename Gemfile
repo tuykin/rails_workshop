@@ -9,6 +9,7 @@ gem 'minitest-power_assert'
 gem 'state_machines'
 gem 'state_machines-activerecord'
 gem 'ransack'
+gem 'simple_form'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'

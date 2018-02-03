@@ -13,9 +13,11 @@ class WebArticlesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should create article' do
-    params = { title: 'title', text: 'some text' }
+    category = article_categories(:sci_fi)
+    params = { title: 'title', text: 'some text', category_id: category.id }
     post articles_url, params: { article: params }
     assert_redirected_to Article.last
+    assert_equal category, Article.last.category
   end
 
   test 'should update article' do

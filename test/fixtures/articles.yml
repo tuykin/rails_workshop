@@ -3,7 +3,9 @@
 one:
   title: MyString
   text: MyText
+  category: it
 
 two:
   title: MyString
   text: MyText
+  category: sci_fi

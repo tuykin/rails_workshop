@@ -1,6 +1,8 @@
 class Web::Moderation::ArticlesController < Web::ApplicationController
   def index
-    @articles = Article.with_state(:on_moderation)
+    @q = Article.ransack(params[:q])
+    @articles = @q.result(distinct: true)
+    @articles = Article.with_state(:on_moderation) unless params[:q]
   end
 
   def show

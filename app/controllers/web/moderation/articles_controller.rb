@@ -12,7 +12,6 @@ class Web::Moderation::ArticlesController < Web::ApplicationController
 
   def edit
     @article = Article::ModerationType.find(params[:id])
-    @categories = Article::Category.all
   end
 
   def moderate

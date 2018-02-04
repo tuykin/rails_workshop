@@ -1,8 +1,6 @@
 class Web::Articles::ApplicationController < Web::ApplicationController
-  protect_from_forgery with: :exception
-
   def resource_article
-    requested_article || Article.new
+    requested_article
   end
 
   def requested_article

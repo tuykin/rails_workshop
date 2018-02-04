@@ -8,7 +8,7 @@ class WebArticlesControllerTest < ActionDispatch::IntegrationTest
 
   test 'should get article' do
     article = articles(:draft)
-    get article_url(article.id)
+    get article_url(article)
     assert_response :success
   end
 
@@ -23,14 +23,14 @@ class WebArticlesControllerTest < ActionDispatch::IntegrationTest
   test 'should update article' do
     article = articles(:draft)
     params = { title: 'new title' }
-    patch article_url(article.id), params: { article: params }
+    patch article_url(article), params: { article: params }
     assert_response :redirect
     assert { params[:title] == article.reload.title }
   end
 
   test 'should destroy article' do
     article = articles(:draft)
-    delete article_url(article.id)
+    delete article_url(article)
     assert_response :redirect
     assert_raises(ActiveRecord::RecordNotFound) { article.reload }
   end

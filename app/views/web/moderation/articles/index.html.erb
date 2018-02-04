@@ -21,8 +21,8 @@
     <tr>
       <td><%= article.title %></td>
       <td><%= article.text %></td>
-      <td><%= article.category.try(:name) %></td>
-      <td><%= article.state %></td>
+      <td><%= article.category&.name %></td>
+      <td><%= article.human_state_name %></td>
       <td><%= link_to 'Show', moderation_article_path(article) %></td>
       <td><%= link_to 'Edit', edit_moderation_article_path(article) %></td>
       <td><%= link_to 'Destroy', article_path(article),
